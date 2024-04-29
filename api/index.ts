@@ -1,18 +1,17 @@
 import axios from 'axios';
 
-const rapidKey = 'dad5165252msh60cffd50f3eae3dp1f5a1bjsnfafeb3d57740';
-const rapidHost = 'zillow56.p.rapidapi.com';
-
-
-async function getDataAmazon() {
+// PRODUCTS
+async function getProducts(page?: number) {
     try {
-        const response = await axios.get('https://zillow56.p.rapidapi.com/search', {
+        const response = await axios.get('https://world.openfoodfacts.org/api/v2/search', {
             params: {
-              location: 'houston, tx'
+                page,
+                page_size: 10,
+                tagtype_O: 'categoties',
+                tag_0: 'frozen-foods'
             },
             headers: {
-                'X-RapidAPI-Key': rapidKey,
-                'X-RapidAPI-Host': rapidHost,
+                'Content-Type': 'application/json'
             }
         });
         console.log(response.data);
@@ -22,5 +21,5 @@ async function getDataAmazon() {
 }
 
 export {
-    getDataAmazon,
+    getProducts,
 }
